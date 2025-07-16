@@ -1,4 +1,4 @@
-# Day 1 Assignment – GitHub Submission
+# Day 3 Assignment – GitHub Submission
 
 Welcome! Please follow the instructions carefully to complete your submission.
 
