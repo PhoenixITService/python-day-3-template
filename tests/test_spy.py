@@ -1,24 +1,23 @@
-import pytest
 import glob
-import subprocess
+import builtins
 
-# ✅ Single test case
-test_cases = [
-    ("120 101 122 101 100 103 72 111 79 78 99", "code"),
-]
+def test_spy_message(monkeypatch, capsys):
+    # Look for a file like decode_spy.py or secret_spy.py
+    py_files = glob.glob("*_spy.py")
+    assert py_files, "No *_spy.py file found"
 
-@pytest.mark.parametrize("input_data, expected_output", test_cases)
-def test_spy_message(input_data, expected_output):
-    spy_files = glob.glob("*_spy.py")
-    assert spy_files, "No *_spy.py file found"
+    # Input as per the problem
+    sample_input = "120 101 122 101 100 103 72 111 79 78 99"
+    expected_output = "code"
 
-    result = subprocess.run(
-        ["python", spy_files[0]],
-        input=input_data,
-        text=True,
-        capture_output=True,
-        timeout=5
-    )
+    # Mock input() to return the spy message
+    monkeypatch.setattr(builtins, "input", lambda: sample_input)
 
-    output = result.stdout.strip()
-    assert output == expected_output, f"Expected '{expected_output}', but got '{output}'"
+    # Read and execute the code
+    with open(py_files[0]) as f:
+        code = f.read()
+        exec(code, {})
+
+    # Check printed output
+    out, _ = capsys.readouterr()
+    assert out.strip() == expected_output, f"Expected '{expected_output}' but got '{out.strip()}'"
