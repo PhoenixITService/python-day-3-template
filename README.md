@@ -6,20 +6,31 @@ Welcome! Please follow the instructions carefully to complete your submission.
 
 ## ✅ Task:
 
-Upload the following **two files** to this repository:
+Submit a Python file that solves the following:
 
-1. A `.py` (Python file)
-2. A `.ipynb` (Jupyter Notebook file)
+A spy sends you a string of space-separated numbers.
+Each number is an ASCII code, but the real message is hidden among them.
 
----
+- First, pick every 3rd character starting from index 1.
+- Then, reverse that sequence.
+- Print the final message — no spaces or symbols.
 
-## Content Requirement:
+**Input**
 
-Both files **must include** the following line:
+```120 101 122 101 100 103 72 111 79 78 99```
 
-```python
-print("Hello, World")
-````
+**Output**
+
+```code```
+
+
+Because,
+
+code -> ```99 111 100 101```
+
+reversed -> ```101 100 111 99```
+
+with noise -> 120 **101** 122 101 **100** 103 72 **111** 79 78 **99**
 
 ---
 
@@ -29,8 +40,8 @@ Use your **first name** in the filename.
 
 * Example:
 
-  * `anand_hello.py`
-  * `anand_hello.ipynb`
+  * `anand_spy.py`
+  * `anand_spy.ipynb`
 
 ---
 
